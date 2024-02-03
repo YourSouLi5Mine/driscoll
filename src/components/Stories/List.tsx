@@ -10,9 +10,12 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { StoriesContext } from '../../context/Stories';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../utils/LanguageSwitcher';
 
 const StoriesList = () => {
   const { stories } = useContext(StoriesContext);
+  const { t } = useTranslation();
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -52,14 +55,15 @@ const StoriesList = () => {
 
   return (
     <>
-      <Box textAlign='right' mt={4} mr={4} ml={4}><Button variant='contained' color='secondary' component={Link} to='/users'>Users</Button></Box>
-      <Typography variant='h2' mt={-4} mb={2} textAlign='center'>Stories</Typography>
+      <LanguageSwitcher />
+      <Box textAlign='right' mt={4} mr={4} ml={4}><Button variant='contained' color='secondary' component={Link} to='/users'>{t('users')}</Button></Box>
+      <Typography variant='h2' mt={-4} mb={2} textAlign='center'>{t('stories')}</Typography>
 
       <CenteredTable>
         <TableHead>
           <TableRow>
-            <StyledTableCell>Title</StyledTableCell>
-            <StyledTableCell>Article</StyledTableCell>
+            <StyledTableCell>{t('title')}</StyledTableCell>
+            <StyledTableCell>{t('article')}</StyledTableCell>
           </TableRow>
         </TableHead>
 

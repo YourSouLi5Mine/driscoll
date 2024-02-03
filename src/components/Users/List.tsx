@@ -12,9 +12,12 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { UsersContext } from '../../context/Users';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../utils/LanguageSwitcher';
 
 const UsersList = () => {
   const { users, setUsers } = useContext(UsersContext);
+  const { t } = useTranslation();
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -58,22 +61,23 @@ const UsersList = () => {
 
   return (
     <>
+      <LanguageSwitcher />
       <Grid container justifyContent="flex-end" spacing={2}>
         <Grid item>
-          <Box mt={4} mr={4}><Button variant='contained' component={Link} to='/users/new'>Create</Button></Box>
+          <Box mt={4} mr={4}><Button variant='contained' component={Link} to='/users/new'>{t('create')}</Button></Box>
         </Grid>
         <Grid item>
-          <Box mt={4} mr={4} ml={4}><Button variant='contained' color='secondary' component={Link} to='/stories'>Stories</Button></Box>
+          <Box mt={4} mr={4} ml={4}><Button variant='contained' color='secondary' component={Link} to='/stories'>{t('stories')}</Button></Box>
         </Grid>
       </Grid>
-      <Typography variant='h2' mt={-4} mb={2} textAlign='center'>Users</Typography>
+      <Typography variant='h2' mt={-4} mb={2} textAlign='center'>{t('users')}</Typography>
 
       <CenteredTable>
         <TableHead>
           <TableRow>
-            <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell>Email</StyledTableCell>
-            <StyledTableCell>Username</StyledTableCell>
+            <StyledTableCell>{t('name')}</StyledTableCell>
+            <StyledTableCell>{t('email')}</StyledTableCell>
+            <StyledTableCell>{t('username')}</StyledTableCell>
             <StyledTableCell colSpan={2}></StyledTableCell>
           </TableRow>
         </TableHead>
