@@ -21,7 +21,7 @@ const UserCreate = () => {
 
   useEffect(() => {
     if (id && users.length > 0) {
-      const foundUser = users.find(user => user.id === id);
+      const foundUser = users.find(u => u.id === id);
       if (foundUser) {
         setUser(foundUser);
       }
@@ -49,7 +49,7 @@ const UserCreate = () => {
 
   return (
     <>
-      <Box textAlign='right' mt={4} mr={4}><Button variant='contained' component={Link} to={`/users`}>Cancel</Button></Box>
+      <Box textAlign='right' mt={4} mr={4}><Button variant='contained' component={Link} to='/users'>Cancel</Button></Box>
       <Box mt={-6}>
         <form onSubmit={handleSubmit}>
           <Box display='flex' flexDirection='column' maxWidth='300px' margin='auto' mt={4}>
