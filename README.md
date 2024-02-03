@@ -21,3 +21,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - Missing tests but I can add them if you want me to (was not mentioned in the specifications)
 - Project is not uploaded to npm but as the tests, let me know if you want me to also upload it there
+- Since there's no backend/db, I used the context from react for the dummy data. Due to this I couldn't use an `id` directly on a link since those are created when the page initially loads (so the uuids would be different)
