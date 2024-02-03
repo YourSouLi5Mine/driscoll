@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -52,12 +53,19 @@ const UsersList = () => {
   }));
 
   const handleDelete = (id: string) => {
-    setUsers(users.filter((user) => user.id !== id));
+    setUsers(users.filter((u) => u.id !== id));
   };
 
   return (
     <>
-      <Box textAlign='right' mt={4} mr={4}><Button variant='contained' component={Link} to={`/users/new`}>Create</Button></Box>
+      <Grid container justifyContent="flex-end" spacing={2}>
+        <Grid item>
+          <Box mt={4} mr={4}><Button variant='contained' component={Link} to='/users/new'>Create</Button></Box>
+        </Grid>
+        <Grid item>
+          <Box mt={4} mr={4} ml={4}><Button variant='contained' color='secondary' component={Link} to='/stories'>Stories</Button></Box>
+        </Grid>
+      </Grid>
       <Typography variant='h2' mt={-4} mb={2} textAlign='center'>Users</Typography>
 
       <CenteredTable>
