@@ -6,10 +6,13 @@ import Box from '@mui/material/Box';
 import { IStory } from '../../interfaces/Story';
 import { useParams } from 'react-router-dom';
 import { StoriesContext } from '../../context/Stories';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../utils/LanguageSwitcher';
 
 const StoryShow = () => {
   const { id } = useParams();
   const { stories } = useContext(StoriesContext);
+  const { t } = useTranslation();
 
   const [story, setStory] = useState<IStory>({
     id: '',
@@ -28,7 +31,8 @@ const StoryShow = () => {
 
   return (
     <>
-      <Box textAlign='right' mt={4} mr={4}><Button variant='contained' component={Link} to='/stories'>Return</Button></Box>
+      <LanguageSwitcher />
+      <Box textAlign='right' mt={4} mr={4}><Button variant='contained' component={Link} to='/stories'>{t('return')}</Button></Box>
       <Typography variant='h3' mt={-4} mb={4} ml={2} textAlign='center'>{story.title}</Typography>
       <Typography variant='h5' mb={1} ml={2} textAlign='center'>{story.article}</Typography>
     </>

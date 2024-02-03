@@ -6,11 +6,14 @@ import Button from '@mui/material/Button';
 import { faker } from '@faker-js/faker';
 import { UsersContext } from '../../context/Users';
 import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../utils/LanguageSwitcher';
 
 const UserCreate = () => {
   const { id } = useParams();
   const { users, setUsers } = useContext(UsersContext);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [user, setUser] = useState<IUser>({
     id: faker.string.uuid(),
@@ -49,12 +52,13 @@ const UserCreate = () => {
 
   return (
     <>
-      <Box textAlign='right' mt={4} mr={4}><Button variant='contained' component={Link} to='/users'>Cancel</Button></Box>
+      <LanguageSwitcher />
+      <Box textAlign='right' mt={4} mr={4}><Button variant='contained' component={Link} to='/users'>{t('cancel')}</Button></Box>
       <Box mt={-6}>
         <form onSubmit={handleSubmit}>
           <Box display='flex' flexDirection='column' maxWidth='300px' margin='auto' mt={4}>
             <TextField
-              label='Name'
+              label={t('name')}
               variant='outlined'
               name='name'
               value={user.name}
@@ -64,7 +68,7 @@ const UserCreate = () => {
             />
 
             <TextField
-              label='Email'
+              label={t('email')}
               variant='outlined'
               name='email'
               value={user.email}
@@ -74,7 +78,7 @@ const UserCreate = () => {
             />
 
             <TextField
-              label='Username'
+              label={t('username')}
               variant='outlined'
               name='username'
               value={user.username}
@@ -83,9 +87,7 @@ const UserCreate = () => {
               required
             />
 
-            <Button type="submit" variant="contained" color="primary" fullWidth>
-              Submit
-            </Button>
+            <Button type="submit" variant="contained" color="primary" fullWidth>{t('submit')}</Button>
           </Box>
         </form>
       </Box>
